@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+
 class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     profile_pic= models.ImageField(upload_to='profile_pic/CustomerProfilePic/',null=True,blank=True)
     address = models.CharField(max_length=40)
-    mobile = models.CharField(max_length=20,null=False)
+    mobile = models.CharField(max_length=10,null=False)
     @property
     def get_name(self):
         return self.user.first_name+" "+self.user.last_name
@@ -36,7 +37,7 @@ class Orders(models.Model):
     product=models.ForeignKey('Product',on_delete=models.CASCADE,null=True)
     email = models.CharField(max_length=50,null=True)
     address = models.CharField(max_length=500,null=True)
-    mobile = models.CharField(max_length=20,null=True)
+    mobile = models.CharField(max_length=10,null=True)
     order_date= models.DateField(auto_now_add=True,null=True)
     status=models.CharField(max_length=50,null=True,choices=STATUS)
 
