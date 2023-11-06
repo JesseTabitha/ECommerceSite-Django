@@ -435,21 +435,20 @@ def my_order_view(request):
 #     return render(request,'ecom/my_order.html',{'products':products,'product_count_in_cart':product_count_in_cart})    
 
 
-import io
+from io import BytesIO  
 from xhtml2pdf import pisa
 from django.template.loader import get_template
-from django.template import Context
 from django.http import HttpResponse
-
 
 def render_to_pdf(template_src, context_dict):
     template = get_template(template_src)
-    html  = template.render(context_dict)
-    result = io.BytesIO()
-    pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
+    html = template.render(context_dict)
+    result = BytesIO() 
+    pdf = pisa.pisaDocument(BytesIO(html.encode("utf-8")), result)
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type='application/pdf')
-    return
+    return HttpResponse("Failed to generate PDF", status=500)
+
 
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
