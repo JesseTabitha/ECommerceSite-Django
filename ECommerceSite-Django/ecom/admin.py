@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer,Product,Orders,Feedback
+from .models import Customer,Product,Orders
 
 class CustomerAdmin(admin.ModelAdmin):
     pass
@@ -13,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Orders, OrderAdmin)
 
-class FeedbackAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Feedback, FeedbackAdmin)
+# class FeedbackAdmin(admin.ModelAdmin):
+#     pass
+# admin.site.register(Feedback, FeedbackAdmin)
 

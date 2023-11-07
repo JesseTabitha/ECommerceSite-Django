@@ -27,10 +27,10 @@ class AddressForm(forms.Form):
     Mobile= forms.IntegerField()
     Address = forms.CharField(max_length=500)
 
-class FeedbackForm(forms.ModelForm):
-    class Meta:
-        model=models.Feedback
-        fields=['name','feedback']
+# class FeedbackForm(forms.ModelForm):
+#     class Meta:
+#         model=models.Feedback
+#         fields=['name','feedback']
 
 #for updating status of order
 class OrderForm(forms.ModelForm):
