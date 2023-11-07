@@ -24,7 +24,7 @@ class ProductForm(forms.ModelForm):
 #address of shipment
 class AddressForm(forms.Form):
     Email = forms.EmailField()
-    Mobile= forms.IntegerField()
+    Mobile= forms.IntegerField(max_value=9999999999)
     Address = forms.CharField(max_length=500)
 
 # class FeedbackForm(forms.ModelForm):
